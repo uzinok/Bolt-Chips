@@ -1,25 +1,114 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
-  <include src="src/template/head.html"></include>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolt-Chips</title>
+    <link rel="stylesheet" href="css/bolt-chips.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 15px 50px;
+            box-sizing: border-box;
+        }
+
+        button {
+          display: block;
+          font-size: 1em!important;
+          padding: 5px!important;
+          margin-bottom: 10px!important;
+        }
+
+        .tac {
+          text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
-  <div style="display: none;">
-    <include src="resource/svg/sprite.svg"></include>
-  </div>
-  <include src="src/template/header.html"></include>
-  <main>
+    <div class="wrap tac">
 
-    <h2>Hello</h2>
-    <svg width="300" class="footer-developer-link__img" role="img">
-      <use xlink:href="#cat-logo"></use>
-    </svg>
-    <img width="300" src="img/img.jpg" alt="#">
+        <h1>Bolt-Chips</h1>
+        <p>Плагин для оповещающих всплывающих окон</p>
 
-    <include src="src/template/footer.html"></include>
-  </main>
+    </div>
+
+    <div class="wrap">
+
+      <button
+        class="bolt-chips bolt-chips--primary"
+        data-class="primary"
+        data-delay="1000"
+      >
+        class: primary, delay: 1000
+      </button>
+      <button
+        class="bolt-chips bolt-chips--secondary"
+        data-class="secondary"
+        data-delay="2000"
+      >
+        class: secondary, delay: 2000
+      </button>
+      <button
+        class="bolt-chips bolt-chips--success"
+        data-class="success"
+        data-delay="5000"
+      >
+        class: success(default), delay: 5000(default)
+      </button>
+      <button
+        class="bolt-chips bolt-chips--danger"
+        data-class="danger"
+        data-delay="3000"
+      >
+        class: danger, delay: 3000
+      </button>
+      <button
+        class="bolt-chips bolt-chips--warning"
+        data-class="warning"
+        data-delay="4000"
+      >
+        class: warning, delay: 4000
+      </button>
+      <button
+        class="bolt-chips bolt-chips--info"
+        data-class="info"
+        data-delay="6000"
+      >
+        class: info, delay: 6000
+      </button>
+      <button
+        class="bolt-chips bolt-chips--light"
+        data-class="light"
+        data-delay="7000"
+      >
+        class: light, delay: 7000
+      </button>
+      <button
+        class="bolt-chips bolt-chips--dark"
+        data-class="dark"
+        data-delay="8000"
+      >
+        class: dark, delay: 8000
+      </button>
+
+    </div>
+
+    <script src="./js/bolt-chips.js"></script>
+
 </body>
 
 </html>
