@@ -22,4 +22,14 @@
 
         .tac {
           text-align: center;
-        }</style></head><body><div class="wrap tac"><h1>Bolt-Chips</h1><p>Плагин для оповещающих всплывающих окон</p></div><div class="wrap"><button class="bolt-chips bolt-chips--primary" data-class="primary" data-delay="1000">class: primary, delay: 1000</button> <button class="bolt-chips bolt-chips--secondary" data-class="secondary" data-delay="2000">class: secondary, delay: 2000</button> <button class="bolt-chips bolt-chips--success" data-class="success" data-delay="5000">class: success(default), delay: 5000(default)</button> <button class="bolt-chips bolt-chips--danger" data-class="danger" data-delay="3000">class: danger, delay: 3000</button> <button class="bolt-chips bolt-chips--warning" data-class="warning" data-delay="4000">class: warning, delay: 4000</button> <button class="bolt-chips bolt-chips--info" data-class="info" data-delay="6000">class: info, delay: 6000</button> <button class="bolt-chips bolt-chips--light" data-class="light" data-delay="7000">class: light, delay: 7000</button> <button class="bolt-chips bolt-chips--dark" data-class="dark" data-delay="8000">class: dark, delay: 8000</button></div><script src="./js/bolt-chips.js"></script></body></html>
+        }</style></head><body><div class="wrap tac"><h1>Bolt-Chips</h1><p>Плагин для оповещающих всплывающих окон</p></div><div class="wrap"><button class="bolt-chips bolt-chips--primary" data-class="primary" data-delay="1000">class: primary, delay: 1000</button> <button class="bolt-chips bolt-chips--secondary" data-class="secondary" data-delay="2000">class: secondary, delay: 2000</button> <button class="bolt-chips bolt-chips--success" data-class="success" data-delay="5000">class: success(default), delay: 5000(default)</button> <button class="bolt-chips bolt-chips--danger" data-class="danger" data-delay="3000">class: danger, delay: 3000</button> <button class="bolt-chips bolt-chips--warning" data-class="warning" data-delay="4000">class: warning, delay: 4000</button> <button class="bolt-chips bolt-chips--info" data-class="info" data-delay="6000">class: info, delay: 6000</button> <button class="bolt-chips bolt-chips--light" data-class="light" data-delay="7000">class: light, delay: 7000</button> <button class="bolt-chips bolt-chips--dark" data-class="dark" data-delay="8000">class: dark, delay: 8000</button></div><script src="./js/bolt-chips.js"></script><script>let btn = document.querySelectorAll('button');
+
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick = function() {
+          const obj = new BoltCips({
+            message: this.innerText,
+            cssClass: `bolt-chips--${this.getAttribute('data-class')}`,
+            delay: this.getAttribute('data-delay')
+          })
+        }
+      }</script></body></html>

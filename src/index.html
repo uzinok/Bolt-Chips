@@ -109,6 +109,20 @@
 
     <script src="./js/bolt-chips.js"></script>
 
+    <script>
+      let btn = document.querySelectorAll('button');
+
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick = function() {
+          const obj = new BoltCips({
+            message: this.innerText,
+            cssClass: `bolt-chips--${this.getAttribute('data-class')}`,
+            delay: this.getAttribute('data-delay')
+          })
+        }
+      }
+    </script>
+
 </body>
 
 </html>
