@@ -1,6 +1,6 @@
 {
   "name": "boltcips",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Плагин для оповещающих всплывающих окон",
   "main": "main.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-uglify-es": "^2.0.0",
     "webpack": "^5.4.0",
-    "webpack-stream": "^6.1.2"
+    "webpack-stream": "^6.1.2",
+    "gulp-group-css-media-queries": "^1.2.2"
   }
 }

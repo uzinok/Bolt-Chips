@@ -14,13 +14,30 @@
 // врапер
 .bolt-chips-wrap {
     position: fixed;
-    top: 15px;
-    right: 15px;
-    margin-left: 15px;
+
+    bottom: 15px;
+    left: 15px;
+    margin-right: 15px;
+
+    @media (min-width: 768px) {
+        bottom: auto;
+        top: 15px;
+        left: auto;
+        right: 15px;
+        margin-left: 15px;
+    }
+
     // расположение чипсов
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 
     max-width: 300px;
 }
@@ -29,7 +46,12 @@
 .bolt-chips {
     padding: 15px;
     border-radius: 3px;
-    margin-bottom: 15px;
+    margin-top: 15px;
+
+    @media (min-width: 768px) {
+        margin-top: auto;
+        margin-bottom: 15px;
+    }
 
     &:last-child {
         margin-bottom: 0;

@@ -11,6 +11,7 @@ const del = require('del');
 const less = require('gulp-less');
 const autoprefixer = require('gulp-autoprefixer');
 const csso = require('gulp-csso');
+const gcmq = require('gulp-group-css-media-queries');
 // html
 const htmlmin = require('gulp-htmlmin');
 // js
@@ -67,6 +68,7 @@ const lessToCss = () => {
       grid: true,
       overrideBrowserslist: ['last 5 versions']
     }))
+    .pipe(gcmq())
     .pipe(csso())
     .pipe(dest('build/css'))
     .pipe(browserSync.stream());
