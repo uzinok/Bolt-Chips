@@ -28,7 +28,7 @@
         btn[i].onclick = function() {
           const obj = new BoltCips({
             message: this.innerText,
-            cssClass: `bolt-chips--${this.getAttribute('data-class')}`,
+            cssClass: 'bolt-chips--' + this.getAttribute('data-class'),
             delay: this.getAttribute('data-delay')
           })
         }

@@ -24,7 +24,7 @@ class BoltCips {
 
         if (cssClass == 'bolt-chips-wrap') {
             elem.classList.add('bolt-chips-wrap');
-            document.body.append(elem);
+            document.body.appendChild(elem);
             return elem;
         }
 
@@ -33,7 +33,7 @@ class BoltCips {
         elem.classList.add(this.cssClass);
         elem.setAttribute('tabindex', 0)
 
-        this.wrap.append(elem);
+        this.wrap.appendChild(elem);
         return elem;
     }
 
@@ -49,12 +49,12 @@ class BoltCips {
     }
 
     isClose() {
-        this.chips.remove();
+        this.wrap.removeChild(this.chips);
 
         this.chips.removeEventListener('click', this.isClose);
 
         if(!this.wrap.querySelector('.bolt-chips')) {
-            this.wrap.remove();
+            document.body.removeChild(this.wrap);
         }
     }
 
