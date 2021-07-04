@@ -5,6 +5,7 @@ class BoltCips {
         this.delay = options.delay || 5000;
 
         this.wrap = null;
+        this.chips = null;
 
         this.isInit();
     }
@@ -38,6 +39,28 @@ class BoltCips {
 
     isInit() {
         this.wrap = this.getChipsWrap();
-        this.createElem(this.cssClass);
+        this.chips = this.createElem(this.cssClass);
+
+        setTimeout(() => {
+            this.isClose();
+        }, this.delay)
+
+        this.monitorClick()
+    }
+
+    isClose() {
+        this.chips.remove();
+
+        this.chips.removeEventListener('click', this.isClose);
+
+        if(!this.wrap.querySelector('.bolt-chips')) {
+            this.wrap.remove();
+        }
+    }
+
+    monitorClick = function() {
+        this.chips.addEventListener('click', () => {
+            this.isClose();
+        });
     }
 }

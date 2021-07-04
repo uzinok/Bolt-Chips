@@ -6,14 +6,25 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var BoltCips = /*#__PURE__*/function () {
   function BoltCips(options) {
     _classCallCheck(this, BoltCips);
+
+    _defineProperty(this, "monitorClick", function () {
+      var _this = this;
+
+      this.chips.addEventListener('click', function () {
+        _this.isClose();
+      });
+    });
 
     this.message = options.message || 'no message';
     this.cssClass = options.cssClass || 'bolt-chips--success';
     this.delay = options.delay || 5000;
     this.wrap = null;
+    this.chips = null;
     this.isInit();
   }
 
@@ -47,8 +58,24 @@ var BoltCips = /*#__PURE__*/function () {
   }, {
     key: "isInit",
     value: function isInit() {
+      var _this2 = this;
+
       this.wrap = this.getChipsWrap();
-      this.createElem(this.cssClass);
+      this.chips = this.createElem(this.cssClass);
+      setTimeout(function () {
+        _this2.isClose();
+      }, this.delay);
+      this.monitorClick();
+    }
+  }, {
+    key: "isClose",
+    value: function isClose() {
+      this.chips.remove();
+      this.chips.removeEventListener('click', this.isClose);
+
+      if (!this.wrap.querySelector('.bolt-chips')) {
+        this.wrap.remove();
+      }
     }
   }]);
 
