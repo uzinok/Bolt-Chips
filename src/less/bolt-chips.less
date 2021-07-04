@@ -1,3 +1,5 @@
+/*! https://github.com/uzinok/Bolt-Chips */
+
 @primary: #007bff;
 @secondary: #6c757d;
 @success: #28a745;
@@ -9,69 +11,78 @@
 
 @color: #212529;
 
+// врапер
 .bolt-chips-wrap {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  margin-left: 15px;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    margin-left: 15px;
+    // расположение чипсов
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  max-width: 300px;
+    max-width: 300px;
 }
 
+// чипс
 .bolt-chips {
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 3px;
+    padding: 15px;
+    border-radius: 3px;
+    margin-bottom: 15px;
 
-  font-size: 1.2em;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+    &:last-child {
+        margin-bottom: 0;
+    }
 
-  &--primary {
-    background-color: @primary;
-    border: 1px solid @primary;
-  }
-  &--secondary {
-    background-color: @secondary;
-    border: 1px solid @secondary;
-  }
-  &--success {
-    background-color: @success;
-    border: 1px solid @success;
-  }
-  &--danger {
-    background-color: @danger;
-    border: 1px solid @danger;
-  }
-  &--warning {
-    background-color: @warning;
-    border: 1px solid @warning;
+    font-size: 1.2em;
+    color: #fff;
+    font-family: Arial,
+    Helvetica,
+    sans-serif;
 
-    color: @color;
-  }
-  &--info {
-    background-color: @info;
-    border: 1px solid @info;
-  }
-  &--light {
-    background-color: @light;
-    border: 1px solid @dark;
+    // модификаторы
+    &--primary {
+        background-color: @primary;
+        border: 1px solid @primary;
+    }
 
-    color: @color;
-  }
-  &--dark {
-    background-color: @dark;
-    border: 1px solid @dark;
-  }
+    &--secondary {
+        background-color: @secondary;
+        border: 1px solid @secondary;
+    }
 
+    &--success {
+        background-color: @success;
+        border: 1px solid @success;
+    }
 
+    &--danger {
+        background-color: @danger;
+        border: 1px solid @danger;
+    }
 
+    &--warning {
+        background-color: @warning;
+        border: 1px solid @warning;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+        color: @color;
+    }
+
+    &--info {
+        background-color: @info;
+        border: 1px solid @info;
+    }
+
+    &--light {
+        background-color: @light;
+        border: 1px solid @dark;
+
+        color: @color;
+    }
+
+    &--dark {
+        background-color: @dark;
+        border: 1px solid @dark;
+    }
 }

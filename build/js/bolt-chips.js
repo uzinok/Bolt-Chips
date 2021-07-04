@@ -8,6 +8,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**!
+ * https://github.com/uzinok/Bolt-Chips
+ * isInit() управляет методами для создания чипса
+ * getChipsWrap() создает/получает врап (this.wrap)
+ * createElem() создает врапер/чипс (this.wrap/this.chips)
+ * monitorClick() отслеживает клик по чипсу, для его закрытия
+ * isClose() удаляет чипс (при необходимости враппер) из DOM, удаляет слушателя событий
+ */
 var BoltCips = /*#__PURE__*/function () {
   function BoltCips(options) {
     _classCallCheck(this, BoltCips);
@@ -40,13 +48,14 @@ var BoltCips = /*#__PURE__*/function () {
   }, {
     key: "createElem",
     value: function createElem(cssClass) {
-      var elem = document.createElement('div');
+      var elem = document.createElement('div'); // если передан класс "bolt-chips-wrap", создаем врап
 
       if (cssClass == 'bolt-chips-wrap') {
         elem.classList.add('bolt-chips-wrap');
         document.body.appendChild(elem);
         return elem;
-      }
+      } // либо создаем чипс
+
 
       elem.innerHTML = this.message;
       elem.classList.add('bolt-chips');
@@ -61,7 +70,8 @@ var BoltCips = /*#__PURE__*/function () {
       var _this2 = this;
 
       this.wrap = this.getChipsWrap();
-      this.chips = this.createElem(this.cssClass);
+      this.chips = this.createElem(this.cssClass); // запуск таймера для удаления чипса через указанный промежуток времени
+
       setTimeout(function () {
         _this2.isClose();
       }, this.delay);
@@ -70,13 +80,15 @@ var BoltCips = /*#__PURE__*/function () {
   }, {
     key: "isClose",
     value: function isClose() {
-      this.wrap.removeChild(this.chips);
-      this.chips.removeEventListener('click', this.isClose);
+      this.wrap.removeChild(this.chips); // удаление слушателя событий
+
+      this.chips.removeEventListener('click', this.isClose); // при необходимости удаляем всрапер из DOM
 
       if (!this.wrap.querySelector('.bolt-chips')) {
         document.body.removeChild(this.wrap);
       }
-    }
+    } // метод объявлен ссылкой на функцию для удаления слушателя событий
+
   }]);
 
   return BoltCips;

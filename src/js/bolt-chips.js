@@ -1,3 +1,12 @@
+/**!
+ * https://github.com/uzinok/Bolt-Chips
+ * isInit() управляет методами для создания чипса
+ * getChipsWrap() создает/получает врап (this.wrap)
+ * createElem() создает врапер/чипс (this.wrap/this.chips)
+ * monitorClick() отслеживает клик по чипсу, для его закрытия
+ * isClose() удаляет чипс (при необходимости враппер) из DOM, удаляет слушателя событий
+ */
+
 class BoltCips {
     constructor(options) {
         this.message = options.message || 'no message';
@@ -22,12 +31,14 @@ class BoltCips {
     createElem(cssClass) {
         let elem = document.createElement('div');
 
+        // если передан класс "bolt-chips-wrap", создаем врап
         if (cssClass == 'bolt-chips-wrap') {
             elem.classList.add('bolt-chips-wrap');
             document.body.appendChild(elem);
             return elem;
         }
 
+        // либо создаем чипс
         elem.innerHTML = this.message;
         elem.classList.add('bolt-chips');
         elem.classList.add(this.cssClass);
@@ -41,6 +52,7 @@ class BoltCips {
         this.wrap = this.getChipsWrap();
         this.chips = this.createElem(this.cssClass);
 
+        // запуск таймера для удаления чипса через указанный промежуток времени
         setTimeout(() => {
             this.isClose();
         }, this.delay)
@@ -51,14 +63,17 @@ class BoltCips {
     isClose() {
         this.wrap.removeChild(this.chips);
 
+        // удаление слушателя событий
         this.chips.removeEventListener('click', this.isClose);
 
-        if(!this.wrap.querySelector('.bolt-chips')) {
+        // при необходимости удаляем всрапер из DOM
+        if (!this.wrap.querySelector('.bolt-chips')) {
             document.body.removeChild(this.wrap);
         }
     }
 
-    monitorClick = function() {
+    // метод объявлен ссылкой на функцию для удаления слушателя событий
+    monitorClick = function () {
         this.chips.addEventListener('click', () => {
             this.isClose();
         });
