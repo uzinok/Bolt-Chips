@@ -26,14 +26,14 @@
 -----------------------------------
 
 ```
-const chips = new BoltCips({
+const chips = new BoltChips({
   message: message,
   [cssClass: cssClass,
   delay: delay]
 });
 ```
 
-Методы и свойста сласса BoltCips
+Методы и свойста сласса BoltChips
 -----------------------------------
 
 * `message` - сообщение чипса ('no message')

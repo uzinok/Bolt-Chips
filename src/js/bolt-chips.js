@@ -7,7 +7,7 @@
  * isClose() удаляет чипс (при необходимости враппер) из DOM, удаляет слушателя событий
  */
 
-class BoltCips {
+class BoltChips {
     constructor(options) {
         this.message = options.message || 'no message';
         this.cssClass = options.cssClass || 'bolt-chips--success';

@@ -50,7 +50,7 @@
         <h2 class="tac">Создание чипса</h2>
 
         <pre>
-          const chips = new BoltCips({
+          const chips = new BoltChips({
             message: message,
             [cssClass: cssClass,
             delay: delay]
@@ -113,7 +113,7 @@
 
         for (let i = 0; i < btn.length; i++) {
             btn[i].onclick = function () {
-                const chips = new BoltCips({
+                const chips = new BoltChips({
                     message: this.innerText,
                     cssClass: 'bolt-chips--' + this.getAttribute('data-class'),
                     delay: this.getAttribute('data-delay')

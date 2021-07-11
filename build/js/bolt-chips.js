@@ -16,9 +16,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * monitorClick() отслеживает клик по чипсу, для его закрытия
  * isClose() удаляет чипс (при необходимости враппер) из DOM, удаляет слушателя событий
  */
-var BoltCips = /*#__PURE__*/function () {
-  function BoltCips(options) {
-    _classCallCheck(this, BoltCips);
+var BoltChips = /*#__PURE__*/function () {
+  function BoltChips(options) {
+    _classCallCheck(this, BoltChips);
 
     _defineProperty(this, "monitorClick", function () {
       var _this = this;
@@ -36,7 +36,7 @@ var BoltCips = /*#__PURE__*/function () {
     this.isInit();
   }
 
-  _createClass(BoltCips, [{
+  _createClass(BoltChips, [{
     key: "getChipsWrap",
     value: function getChipsWrap() {
       if (document.querySelector('.bolt-chips-wrap')) {
@@ -91,5 +91,5 @@ var BoltCips = /*#__PURE__*/function () {
 
   }]);
 
-  return BoltCips;
+  return BoltChips;
 }();
