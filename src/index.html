@@ -15,11 +15,14 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .wrap {
             width: 100%;
-            max-width: 1000px;
+            max-width: 768px;
             padding: 0 15px 50px;
             box-sizing: border-box;
         }
@@ -29,6 +32,11 @@
             font-size: 1em !important;
             padding: 5px !important;
             margin-bottom: 10px !important;
+        }
+
+        pre {
+            background-color: beige;
+            padding: 10px 15px 0;
         }
 
         .tac {
@@ -52,18 +60,56 @@
         <h2 class="tac">Создание чипса</h2>
 
         <pre>
-          const chips = new BoltChips({
-            message: message,
-            [cssClass: cssClass,
-            delay: delay]
-          });
+const chips = new BoltChips({
+    message: 'этот текст будет в сообщении'
+});
         </pre>
+
+        <button>
+            этот текст будет в сообщении
+        </button>
+    </div>
+
+    <div class="wrap">
+        <h2 class="tac">Создание чипса с параметрами</h2>
+
+        <pre>
+const chips = new BoltChips({
+    message: 'этот текст будет в сообщении',
+    cssClass: 'bolt-chips--primary',
+    delay: 5000
+});
+        </pre>
+
+        <button class="bolt-chips bolt-chips--primary" data-class="primary" data-delay="5000">
+            этот текст будет в сообщении
+        </button>
+    </div>
+
+    <div class="wrap">
+        <h2 class="tac">Создание чипса с параметрами для доступности</h2>
+
+        <pre>
+const chips = new BoltChips({
+    message: 'это сообщение проговорит скрин-ридер',
+    role: 'alert',
+    ariaLive: 'assertive',
+    delay: 50000
+});
+        </pre>
+
+        <button data-delay="50000" data-role="alert" data-ariaLive="assertive">
+            это сообщение проговорит скрин-ридер
+        </button>
     </div>
 
     <div class="wrap">
         <h2 class="tac">Методы и свойства</h2>
 
         <ul>
+            <li>role - роль (для скрин-ридера)</li>
+            <li>ariaLive - важность (для скрин-ридера)</li>
+
             <li>message - сообщение чипса ('no message')</li>
             <li>cssClass - класс модификатор чипла ('bolt-chips--success')</li>
             <li>delay - время до удаления чипса в милисекундах (5000)</li>
@@ -80,30 +126,31 @@
     </div>
 
     <div class="wrap">
+        <h2 class="tac">Примеры разных цветов</h2>
 
         <button class="bolt-chips bolt-chips--primary" data-class="primary" data-delay="1000">
-            class: primary, delay: 1000
+            class: bolt-chips--primary
         </button>
         <button class="bolt-chips bolt-chips--secondary" data-class="secondary" data-delay="2000">
-            class: secondary, delay: 2000
+            class: bolt-chips--secondary
         </button>
         <button class="bolt-chips bolt-chips--success" data-class="success" data-delay="5000">
-            class: success(default), delay: 5000(default)
+            class: bolt-chips--success(default), delay: 5000(default)
         </button>
         <button class="bolt-chips bolt-chips--danger" data-class="danger" data-delay="3000">
-            class: danger, delay: 3000
+            class: bolt-chips--danger
         </button>
         <button class="bolt-chips bolt-chips--warning" data-class="warning" data-delay="4000">
-            class: warning, delay: 4000
+            class: bolt-chips--warning
         </button>
         <button class="bolt-chips bolt-chips--info" data-class="info" data-delay="6000">
-            class: info, delay: 6000
+            class: bolt-chips--info
         </button>
         <button class="bolt-chips bolt-chips--light" data-class="light" data-delay="7000">
-            class: light, delay: 7000
+            class: bolt-chips--light
         </button>
         <button class="bolt-chips bolt-chips--dark" data-class="dark" data-delay="8000">
-            class: dark, delay: 8000
+            class: bolt-chips--dark
         </button>
 
     </div>
@@ -115,10 +162,14 @@
 
         for (let i = 0; i < btn.length; i++) {
             btn[i].onclick = function () {
+                let cssClass = this.getAttribute('data-class') ? 'bolt-chips--' + this.getAttribute('data-class') : null;
                 const chips = new BoltChips({
                     message: this.innerText,
-                    cssClass: 'bolt-chips--' + this.getAttribute('data-class'),
-                    delay: this.getAttribute('data-delay')
+                    cssClass: cssClass,
+
+                    delay: this.getAttribute('data-delay'),
+                    role: this.getAttribute('data-role') || null,
+                    ariaLive: this.getAttribute('data-ariaLive') || null
                 });
             }
         }

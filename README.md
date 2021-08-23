@@ -29,13 +29,17 @@
 const chips = new BoltChips({
   message: message,
   [cssClass: cssClass,
-  delay: delay]
+  delay: delay,
+  role: role,
+  ariaLive: ariaLive]
 });
 ```
 
 Методы и свойста сласса BoltChips
 -----------------------------------
 
+* `role` - роль (для скрин-ридера)
+* `ariaLive` - важность (для скрин-ридера)
 * `message` - сообщение чипса ('no message')
 * `cssClass` - класс модификатор чипла ('bolt-chips--success')
 * `delay` - время до удаления чипса в милисекундах (5000)
