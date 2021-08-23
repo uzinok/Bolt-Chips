@@ -5,6 +5,10 @@
  * createElem() создает врапер/чипс (this.wrap/this.chips)
  * monitorClick() отслеживает клик по чипсу, для его закрытия
  * isClose() удаляет чипс (при необходимости враппер) из DOM, удаляет слушателя событий
+ *
+ * для доступности можно добавить следующие ариа-атрибуты:
+ * role => options.role (alert, status, log, timer, marquee)
+ * aria-live => options.ariaLive (off, polite, assertive)
  */
 
 class BoltChips {
@@ -12,6 +16,9 @@ class BoltChips {
         this.message = options.message || 'no message';
         this.cssClass = options.cssClass || 'bolt-chips--success';
         this.delay = options.delay || 5000;
+
+        this.role = options.role || null;
+        this.ariaLive = options.ariaLive || null;
 
         this.wrap = null;
         this.chips = null;
@@ -43,6 +50,11 @@ class BoltChips {
         elem.classList.add('bolt-chips');
         elem.classList.add(this.cssClass);
         elem.setAttribute('tabindex', 0)
+
+        if (this.role)
+            elem.setAttribute('role', this.role)
+        if (this.ariaLive)
+            elem.setAttribute('aria-live', this.ariaLive)
 
         this.wrap.appendChild(elem);
         return elem;
