@@ -1,6 +1,6 @@
 {
   "name": "boltchips",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Плагин для оповещающих всплывающих окон",
   "main": "main.js",
   "scripts": {
